@@ -1,92 +1,22 @@
-<html>
+<!DOCTYPE html>
+<html lang="de">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>MPD@PI</title>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
 
-	<!-- Required styles for MDC Web -->
-	<link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
-	
-	<!-- Required MDC Web JavaScript library -->
-	<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+	<link rel="stylesheet" href="libs/material-components-web.min-5.1.0.css">
+	<link rel="stylesheet" href="libs/material-icons.css">
+	<script src="libs/material-components-web.min-5.1.0.js"></script>
 
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"></link>
-
-	<script type="module" src="js/header.js"></script>
-	<script type="module" src="js/button.js"></script>
-
+	<script type="module" src="js/header.js" defer></script>
+	<script type="module" src="js/status.js" defer></script>
+	<script type="module" src="js/senders.js" defer></script>
 </head>
 <body>
-
-	<header class="mdc-top-app-bar">
-		<div class="mdc-top-app-bar__row">
-			<section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-				<button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button">menu</button>
-				<span class="mdc-top-app-bar__title">MPD Radio</span>
-			</section>
-			<section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
-				<button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Play">play_arrow</button>
-				<button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Stop">stop</button>
-				<button class="material-icons mdc-top-app-bar__action-item mdc-icon-button" aria-label="Edit">edit</button>
-			</section>
-		</div>
-	</header>
-
-<article class="mdc-top-app-bar--fixed-adjust">
-
-	<ul class="mdc-list">
-		<li class="mdc-list-item" tabindex="0">
-			<span class="mdc-list-item__text">Single-line item</span>
-		</li>
-	</ul>
-
-	<table>
-		<tr>
-			<td>
-				<span class="material-icons" aria-hidden="true">volume_down</span>
-			</td>
-			<td style="width:100%">
-				<div class="mdc-slider mdc-slider--discrete" tabindex="0" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Select Value">
-					<div class="mdc-slider__track-container">
-						<div class="mdc-slider__track"></div>
-					</div>
-					<div class="mdc-slider__thumb-container">
-						<div class="mdc-slider__pin">
-							<span class="mdc-slider__pin-value-marker"></span>
-						</div>
-						<svg class="mdc-slider__thumb" width="21" height="21">
-							<circle cx="10.5" cy="10.5" r="7.875"></circle>
-						</svg>
-						<div class="mdc-slider__focus-ring"></div>
-					</div>
-				</div>
-			</td>
-			<td>
-				<span class="material-icons" aria-hidden="true">volume_up</span>
-			</td>
-		</tr>
-	</table>
-
-	<ul class="mdc-list">
-		<li class="mdc-list-item" tabindex="0">
-			<span class="mdc-list-item__graphic material-icons" aria-hidden="true">play_arrow</span>
-			<span class="mdc-list-item__text">Single-line item</span>
-			<span class="mdc-list-item__meta material-icons" aria-hidden="true">more_vert</span>
-		</li>
-		<li role="separator" class="mdc-list-divider"></li>
-		<li class="mdc-list-item">
-			<span class="mdc-list-item__graphic material-icons" aria-hidden="true">play_arrow</span>
-			<span class="mdc-list-item__text">Single-line item</span>
-			<span class="mdc-list-item__meta material-icons" aria-hidden="true">more_vert</span>
-		</li>
-		<li role="separator" class="mdc-list-divider"></li>
-		<li class="mdc-list-item">
-			<span class="mdc-list-item__graphic material-icons" aria-hidden="true">play_arrow</span>
-			<span class="mdc-list-item__text">Single-line item</span>
-			<span class="mdc-list-item__meta material-icons" aria-hidden="true">more_vert</span>
-		</li>
-		<li role="separator" class="mdc-list-divider"></li>
-	</ul>
-
-</article>
+	<mp-header></mp-header>
+	<div>
+		<mp-status></mp-status>
+		<mp-senders></mp-senders>
+	</div>
 </body>
 </html>

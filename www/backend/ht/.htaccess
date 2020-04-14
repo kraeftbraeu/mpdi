@@ -1,8 +1,0 @@
-AuthUserFile /ht/.htusers
-AuthGroupFile /dev/null
-AuthName "name"
-Auth_Mysql off
-AuthType Basic
-<Limit GET>
-require valid-user
-</Limit>
