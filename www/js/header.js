@@ -23,6 +23,7 @@ export default class MpHeader extends HTMLElement {
 
     connectedCallback() {
         render(this.template, this);
+        new mdc.topAppBar.MDCTopAppBar(document.querySelector('.mdc-top-app-bar'));
     }
 
     toggleMenu() {

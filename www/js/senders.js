@@ -1,3 +1,4 @@
+import * as constants from './constants.js';
 import {html, render} from '../libs/lit-html/lit-html.js';
 
 export default class MpSenders extends HTMLElement {
@@ -18,7 +19,7 @@ export default class MpSenders extends HTMLElement {
     }
 
     connectedCallback() {
-        fetch("mock/load.json")
+        fetch(constants.loadSendersUrl)
         .then(response => response.json())
         .then(jsonSenders => {
             console.log(jsonSenders);

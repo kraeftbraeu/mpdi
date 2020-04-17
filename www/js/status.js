@@ -1,12 +1,14 @@
+import * as constants from './constants.js';
 import {html, render} from '../libs/lit-html/lit-html.js';
 
 export default class MpStatus extends HTMLElement {
 
     get template() {
+        console.log(this.status.playing);
         return html`
         <ul class="mdc-list">
             <li class="mdc-list-item" tabindex="0">
-                <span class="mdc-list-item__text">${this.status?.playing}</span>
+                <span class="mdc-list-item__text">${this.status ? this.status.playing : ''}</span>
             </li>
         </ul>
 
@@ -19,7 +21,7 @@ export default class MpStatus extends HTMLElement {
                     <div class="mdc-slider mdc-slider--discrete" tabindex="0" role="slider"
                             aria-valuemin="0"
                             aria-valuemax="100"
-                            aria-valuenow="${this.status?.volume}"
+                            aria-valuenow="${this.status ? this.status.volume : ''}"
                             aria-label="Slide Volume"
                             @mouseup=${() => this.setVolume()}>
                         <div class="mdc-slider__track-container">
@@ -49,7 +51,7 @@ export default class MpStatus extends HTMLElement {
     }
 
     updateStatus() {
-        fetch("mock/status.json")
+        fetch(constants.loadStatusUrl)
         .then(response => response.json())
         .then(jsonStatus => this.handleResponse(jsonStatus));
     }
@@ -62,14 +64,14 @@ export default class MpStatus extends HTMLElement {
         } else if(value === '-') {
             volume = Math.max(volume - step, 0);
         }
-        fetch("mock/status.json?volume=" + volume)
+        fetch(constants.setVolumeUrl + volume)
         .then(response => response.json())
         .then(jsonStatus => this.handleResponse(jsonStatus));
     }
 
     playRadio(index = this.indexPlaying) {
         console.log('play', index);
-        fetch("mock/status.json?index=" + index)
+        fetch(constants.playUrl + (index + 1))
         .then(response => response.json())
         .then(jsonStatus => {
             this.indexPlaying = index; // TODO: keep that index on server side and return on each status
@@ -79,7 +81,7 @@ export default class MpStatus extends HTMLElement {
 
     stopRadio() {
         console.log('stop');
-        fetch("mock/status.json?do=stop")
+        fetch(constants.stopUrl)
         .then(response => response.json())
         .then(jsonStatus => {
             this.handleResponse(jsonStatus);
