@@ -63,11 +63,11 @@
 		echo json_encode(saveList($senders));
 		exit(0);
 	}
-	elseif($param == "shutdown")
+	/*elseif($param == "shutdown")
 	{
 		exec("sudo shutdown -h 0"); // TODO: geht ned
 		exit(0);
-	}
+	}*/
 	elseif($param == "status")
 	{
 	}
