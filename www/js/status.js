@@ -4,7 +4,6 @@ import {html, render} from '../libs/lit-html/lit-html.js';
 export default class MpStatus extends HTMLElement {
 
     get template() {
-        console.log(this.status.playing);
         return html`
         <ul class="mdc-list">
             <li class="mdc-list-item" tabindex="0">
@@ -67,6 +66,11 @@ export default class MpStatus extends HTMLElement {
         fetch(constants.setVolumeUrl + volume)
         .then(response => response.json())
         .then(jsonStatus => this.handleResponse(jsonStatus));
+    }
+
+    reloadRadio() {
+        console.log('reload');
+        fetch(constants.reloadUrl);
     }
 
     playRadio(index = this.indexPlaying) {
